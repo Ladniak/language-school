@@ -1,0 +1,74 @@
+.headerLayout {
+  display: flex;
+  padding: 20px 128px;
+  justify-content: center;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+  /* gap: 268px; */
+  min-width: 1184px;
+}
+
+.navAndLogo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+  /* gap: 390px; */
+  min-width: 661px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  gap: 8px;
+
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: #121417;
+}
+
+.nav {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: row;
+  gap: 28px;
+}
+
+.link {
+  position: relative;
+  text-decoration: none;
+  color: #121417; /* Колір тексту */
+  padding-bottom: 4px; /* Відступ під лінію */
+  display: inline-block;
+}
+
+.link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px; /* Товщина лінії */
+  background-color: #213a5c; /* Колір лінії */
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease-in-out;
+}
+
+.link:hover {
+  color: #213a5c;
+}
+
+.link:hover::after {
+  transform: scaleX(1);
+}

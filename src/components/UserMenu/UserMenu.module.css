@@ -1,0 +1,62 @@
+.userMenu {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: row;
+  gap: 16px;
+}
+
+.logBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  gap: 8px;
+
+  width: 73px;
+  height: 20px;
+
+  padding: 0;
+
+  background: none;
+  color: black;
+
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.25;
+  color: #121417;
+
+  border-radius: 5px;
+}
+
+.icon {
+  stroke: #9fb7ce;
+  transition: stroke 0.6s ease;
+}
+
+.logBtn:hover .icon {
+  stroke: #213a5c;
+}
+
+.regBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  gap: 8px;
+
+  padding: 0%;
+
+  border-radius: 12px;
+  padding: 14px 39px;
+  width: 166px;
+  height: 48px;
+
+  background: #121417;
+
+  transition: background 0.6s ease;
+}
+
+.regBtn:hover {
+  background: #213a5c;
+}

@@ -1,0 +1,150 @@
+.container {
+  display: flex;
+  padding: 0 64px;
+  align-items: center;
+  flex-direction: column;
+}
+
+.heroDiv {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.infoDiv {
+  display: flex;
+  flex-direction: column;
+  border-radius: 30px;
+  width: 720px;
+  height: 530px;
+
+  padding: 98px 0 98px 64px;
+
+  background: #f8f8f8;
+}
+
+.banner {
+  font-weight: 500;
+  font-size: 48px;
+  line-height: 1.16667;
+  letter-spacing: -0.02em;
+  color: #121417;
+
+  width: 548px;
+  height: 112px;
+
+  margin-bottom: 32px;
+}
+
+.bannerSpan {
+  font-style: italic;
+  font-weight: 400;
+
+  border-radius: 8px;
+  padding: 0 4px;
+  width: 195px;
+  height: 40px;
+  background: #bfd6ea;
+}
+
+.text {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.375;
+  letter-spacing: -0.02em;
+  color: #121417;
+
+  width: 471px;
+
+  margin-bottom: 64px;
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  gap: 0px;
+
+  border-radius: 12px;
+  padding: 16px 85px;
+  width: 267px;
+  height: 60px;
+
+  background: #9fb7ce;
+
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1.55556;
+  color: #121417;
+
+  transition: background 0.6s ease;
+}
+
+.btn:hover {
+  background: #bbd5ec;
+}
+
+.pngDiv {
+  display: flex;
+  position: relative;
+  border-radius: 30px;
+  width: 568px;
+  height: 530px;
+
+  background: #bfd6ea;
+}
+
+.girlImg {
+  display: flex;
+  width: 339px;
+  height: 339px;
+  margin: 80px auto 0 auto;
+}
+
+.laptop {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+}
+
+.secondDiv {
+  display: flex;
+  gap: 100px;
+  position: relative;
+  width: 1300px;
+  height: 116px;
+  margin-bottom: 32px;
+  border-radius: 30px;
+  border: 2px solid transparent; /* Робимо рамку прозорою */
+  background: linear-gradient(white, white) padding-box,
+    repeating-linear-gradient(90deg, #9fb7ce 0 20px, transparent 20px 40px)
+      border-box;
+  border-radius: 30px; /* Закруглені кути */
+  padding: 40px 122px;
+}
+
+.infoBlock {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: row;
+  gap: 16px;
+}
+
+.number {
+  font-weight: 500;
+  font-size: 28px;
+  line-height: 1.14286;
+  letter-spacing: -0.02em;
+  color: #121417;
+}
+
+.par {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.28571;
+  letter-spacing: -0.02em;
+  color: rgba(18, 20, 23, 0.7);
+}
