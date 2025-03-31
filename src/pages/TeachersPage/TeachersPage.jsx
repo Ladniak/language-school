@@ -1,7 +1,10 @@
+import module from "./TeachersPage.module.css"
 
 const TeachersPage = () => {
     return (
-        <div>TeachersPage</div>
+        <div className={module.container}>
+            TeachersPage
+        </div>
     )
 }
 
