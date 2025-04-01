@@ -1,8 +1,19 @@
 import { useEffect, useState } from "react";
 import module from "./Register.module.css"
+import { useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
+import { registerOp } from "../../redux/auth/operations";
 
 const Register = ({ onClose }) => {
+    const dispatch = useDispatch();
     const [show, setShow] = useState(false);
+    const { register, handleSubmit } = useForm();
+
+    const onSubmit = (data) => {
+        console.log(data);
+        dispatch(registerOp(data))
+        onClose();
+    }
 
     const handleEscape = event => {
         if (event.key === 'Escape') {
@@ -30,17 +41,17 @@ const Register = ({ onClose }) => {
                         <path d="M8 8L24 24" stroke="#121417" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
                 </button>
-                <form id="form" className={module.form}>
+                <form id="form" onSubmit={handleSubmit(onSubmit)} className={module.form}>
                     <h1 className={module.header}>Registration</h1>
                     <p className={module.par}>
                         Thank you for your interest in our platform!
                         In order to register, we need some information.
                         Please provide us with the following information
                     </p>
-                    <input type="text" placeholder="Name" className={module.inputNm} />
-                    <input type="text" placeholder="Email" className={module.inputEm} />
+                    <input type="text" placeholder="Name" {...register('displayName')} className={module.inputNm} />
+                    <input type="text" placeholder="Email" {...register('email')} className={module.inputEm} />
                     <div className={module.btnDiv}>
-                        <input type={show ? "text" : "password"} placeholder="Password" className={module.inputPs} />
+                        <input type={show ? "text" : "password"} {...register('password')} placeholder="Password" autoComplete="on" className={module.inputPs} />
                         <label className={module.btnLabel} onClick={handleShow}>
                             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <g clipPath="url(#clip0_4_621)">

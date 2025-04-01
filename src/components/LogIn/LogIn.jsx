@@ -1,8 +1,19 @@
 import { useEffect, useState } from "react";
 import module from "./LogIn.module.css"
+import { useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
+import { loginOp } from "../../redux/auth/operations";
 
 const LogIn = ({ onClose }) => {
+    const dispatch = useDispatch();
     const [show, setShow] = useState(false);
+    const { register, handleSubmit } = useForm();
+
+    const onSubmit = (data) => {
+        console.log(data);
+        dispatch(loginOp(data))
+        onClose();
+    }
 
     const handleEscape = event => {
         if (event.key === 'Escape') {
@@ -30,15 +41,15 @@ const LogIn = ({ onClose }) => {
                         <path d="M8 8L24 24" stroke="#121417" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
                 </button>
-                <form id="form" className={module.form}>
+                <form id="form" onSubmit={handleSubmit(onSubmit)} className={module.form}>
                     <h1 className={module.header}>Log In</h1>
                     <p className={module.par}>
                         Welcome back! Please enter your credentials to
                         access your account and continue your search for an teacher.
                     </p>
-                    <input type="text" placeholder="Email" className={module.inputEm} />
+                    <input type="text" placeholder="Email" {...register('email')} className={module.inputEm} />
                     <div className={module.btnDiv}>
-                        <input type={show ? "text" : "password"} placeholder="Password" className={module.inputPs} />
+                        <input type={show ? "text" : "password"} placeholder="Password" {...register('password')} autoComplete="on" className={module.inputPs} />
                         <label className={module.btnLabel} onClick={handleShow}>
                             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <g clipPath="url(#clip0_4_621)">
