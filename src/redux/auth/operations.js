@@ -3,8 +3,10 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   updateProfile,
+  onAuthStateChanged,
 } from "firebase/auth";
 import { createAsyncThunk } from "@reduxjs/toolkit";
+import { setUser } from "./slice";
 
 export const registerOp = createAsyncThunk(
   "auth/registerOp",
@@ -55,12 +57,26 @@ export const loginOp = createAsyncThunk(
   }
 );
 
-// export const getUser = getAuth();
-// onAuthStateChanged(auth, (user) => {
-//   if (user) {
-//     const uid = user.uid;
-//     console.log(uid);
-//   } else {
-//     console.log("User not Found!");
-//   }
-// });
+export const refreshOp = createAsyncThunk(
+  "auth/refreshOp",
+  async (_, { dispatch }) => {
+    const auth = getAuth();
+
+    return new Promise((resolve) => {
+      onAuthStateChanged(auth, (user) => {
+        if (user) {
+          dispatch(
+            setUser({
+              uid: user.uid,
+              email: user.email,
+              displayName: user.displayName,
+            })
+          );
+        } else {
+          dispatch(setUser(null));
+        }
+        resolve();
+      });
+    });
+  }
+);
