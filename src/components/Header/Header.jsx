@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom"
 
-import UserMenu from "../UserMenu/UserMenu"
+import HeaderMenu from "../HeaderMenu/HeaderMenu"
 
 import module from "./Header.module.css"
 
@@ -28,7 +28,7 @@ const AppBar = () => {
                         <NavLink className={module.link} to="/teachers">Teachers</NavLink>
                     </div>
                 </div>
-                <UserMenu />
+                <HeaderMenu />
             </div>
         </header>
     )

@@ -1,0 +1,60 @@
+.menuDiv {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.link {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+
+  padding: 0;
+
+  background: none;
+  color: black;
+
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.25;
+  color: #121417;
+
+  border-radius: 5px;
+}
+
+.icon {
+  stroke: #9fb7ce;
+  transition: stroke 0.6s ease;
+}
+
+.link:hover .icon {
+  stroke: #213a5c;
+}
+
+.btnName {
+  display: flex;
+  margin-top: 2px;
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  gap: 8px;
+
+  padding: 0%;
+
+  border-radius: 12px;
+  padding: 14px 39px;
+  width: 166px;
+  height: 48px;
+
+  background: #121417;
+
+  transition: background 0.6s ease;
+}
+
+.btn:hover {
+  background: #213a5c;
+}
