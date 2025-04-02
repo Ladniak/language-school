@@ -33,6 +33,7 @@ button {
   border: none;
   color: #ffffff;
   transition: 0.3s;
+  padding: 0;
 }
 
 img {

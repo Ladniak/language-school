@@ -1,0 +1,265 @@
+.card {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: row;
+  gap: 48px;
+
+  border-radius: 24px;
+  padding: 24px;
+  width: 1184px;
+
+  background: #fff;
+}
+
+.imgDiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 3px solid #fbe9ba;
+  border-radius: 100px;
+  width: 120px;
+  height: 120px;
+}
+
+.contentDiv {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  width: 968px;
+}
+
+.avatar {
+  border-radius: 100px;
+  width: 96px;
+  height: 96px;
+}
+
+.infoDiv {
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+  margin-bottom: 32px;
+}
+
+.titleDiv {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  gap: 10px;
+
+  width: 271px;
+  height: 56px;
+}
+
+.lang {
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #8a8a89;
+}
+
+.title {
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 1;
+  color: #121417;
+}
+
+.detailInfo {
+  display: flex;
+  position: relative;
+  gap: 16px;
+
+  width: 697px;
+  height: 26px;
+}
+
+.infoPar1 {
+  display: flex;
+  gap: 8px;
+
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #121417;
+}
+
+.icon {
+  display: flex;
+  margin-top: 4px;
+}
+
+.infoPar {
+  display: flex;
+  gap: 8px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #121417;
+}
+
+.star {
+  display: flex;
+  margin-top: 3.5px;
+}
+
+.price {
+  color: #38cd3e;
+}
+
+.stick {
+  stroke-width: 1px;
+  stroke: rgba(18, 20, 23, 0.2);
+}
+
+.heart {
+  position: absolute;
+  right: 0;
+
+  background: none;
+  padding: 0;
+}
+
+.heartIcon {
+  stroke-width: 2px;
+  stroke: #121417;
+  transition: stroke 0.5s ease;
+}
+
+.heart:hover .heartIcon {
+  stroke: #bfd6ea;
+}
+
+.descrDiv {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.desrcPar {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #8a8a89;
+}
+
+.desrcParSpan {
+  text-decoration: underline;
+  text-decoration-skip-ink: none;
+  color: #121417;
+}
+
+.parSpan {
+  color: #121417;
+}
+
+.readMoreDiv {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 32px;
+}
+
+.readMoreBtn {
+  background: none;
+  width: 80px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  text-decoration: underline;
+  text-decoration-skip-ink: none;
+  color: #121417;
+}
+
+.experience {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #121417;
+  margin-bottom: 32px;
+}
+
+.commentDiv {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.ratingDiv {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: row;
+  gap: 8px;
+}
+
+.commentInfoDiv {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.levelsDiv {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: row;
+  gap: 8px;
+  margin-bottom: 32px;
+}
+
+.levelsPar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  gap: 4px;
+
+  border: 1px solid rgba(18, 20, 23, 0.2);
+  border-radius: 35px;
+  padding: 8px 12px;
+  height: 32px;
+
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.14286;
+  color: #121417;
+}
+
+.trialLesson {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  gap: 0px;
+
+  border-radius: 12px;
+  padding: 16px 0;
+  width: 232px;
+  height: 60px;
+
+  background: #9fb7ce;
+  color: black;
+
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1.55556;
+  color: #121417;
+
+  transition: background 0.6s ease;
+}
+
+.trialLesson:hover {
+  background: #bbd5ec;
+}
