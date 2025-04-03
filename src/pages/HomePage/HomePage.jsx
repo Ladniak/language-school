@@ -17,7 +17,7 @@ const HomePage = () => {
                     <NavLink className={module.btn} to="/teachers">Get started</NavLink>
                 </div>
                 <div className={module.pngDiv}>
-                    <img className={module.girlImg} src="/68e4226188648a055ee1b42bed644f46-sticker.png" alt="girl" />
+                    <img className={module.girlImg} src="/image/girl.png" alt="girl" />
                     <svg className={module.laptop} width="361" height="176" viewBox="0 0 361 176" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g clipPath="url(#clip0_16932_103)">
                             <path d="M7.05786 0C3.51331 0 0.640015 2.87903 0.640015 6.43046V240.821C0.640015 244.372 3.51331 247.251 7.05786 247.251H353.942C357.487 247.251 360.36 244.372 360.36 240.821V6.43046C360.36 2.87903 357.487 0 353.942 0H7.05786Z" fill="url(#paint0_linear_16932_103)" />
