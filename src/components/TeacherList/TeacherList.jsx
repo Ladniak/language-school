@@ -9,13 +9,13 @@ const TeacherList = () => {
     const teachers = useSelector(selectTeachers);
 
     return (
-        <div className={module.container}>
+        <ul className={module.container}>
             {teachers?.map((teacher) => (
-                <div key={teacher.id}>
+                <li key={teacher.id}>
                     <TeacherCard teacher={teacher} />
-                </div>
+                </li>
             ))}
-        </div>
+        </ul>
     )
 }
 

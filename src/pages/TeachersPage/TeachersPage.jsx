@@ -8,6 +8,8 @@ import { getTeachers } from "../../redux/teachers/operations"
 
 import TeacherList from "../../components/TeacherList/TeacherList"
 
+import { BeatLoader } from "react-spinners"
+
 const TeachersPage = () => {
     const dispatch = useDispatch();
     const loading = useSelector(isLoading);
@@ -19,7 +21,7 @@ const TeachersPage = () => {
     return (
         <div className={module.container}>
             {loading ? (
-                "Loading..."
+                <BeatLoader />
             ) : (
                 <TeacherList />
             )}

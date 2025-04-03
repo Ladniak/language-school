@@ -1,6 +1,12 @@
+import { useState } from "react"
 import module from "./TeacherCard.module.css"
 
 const TeacherCard = ({ teacher }) => {
+    const [visible, setVisible] = useState(false);
+
+    const handleChangeReadMore = () => {
+        setVisible(!visible);
+    }
 
     return (
         <div className={module.card}>
@@ -46,15 +52,15 @@ const TeacherCard = ({ teacher }) => {
                     </div>
                 </div>
                 <div className={module.descrDiv}>
-                    <p className={module.desrcPar}>Speaks: {teacher.languages.map((item, index) => (<span key={index} className={module.desrcParSpan}>{item} </span>))}</p>
+                    <p className={module.desrcPar}>Speaks: {teacher.languages.map((item, index) => (index === 0 ? <span key={index} className={module.desrcParSpan}>{item}, </span> : <span key={index} className={module.desrcParSpan}>{item} </span>))}</p>
                     <p className={module.desrcPar}>Lesson info: <span className={module.parSpan}>{teacher.lesson_info}</span></p>
                     <p className={module.desrcPar}>Conditions: <span className={module.parSpan}>{teacher.conditions}</span></p>
                 </div>
                 <div className={module.readMoreDiv}>
-                    <button className={module.readMoreBtn}>
+                    <button className={visible === false ? module.readMoreBtn : module.displayNone} onClick={handleChangeReadMore}>
                         Read more
                     </button>
-                    {/* <div>
+                    <div className={visible === true ? '' : module.displayNone}>
                         <p className={module.experience}>{teacher.experience}</p>
                         <div className={module.commentDiv}>
                             {teacher.reviews?.map((item, index) => (
@@ -72,10 +78,10 @@ const TeacherCard = ({ teacher }) => {
                                 </div>
                             ))}
                         </div>
-                    </div> */}
+                    </div>
                 </div>
                 <div className={module.levelsDiv}>
-                    {teacher.levels?.map((item, index) => (<p className={module.levelsPar} key={index}>{item}</p>))}
+                    {teacher.levels?.map((item, index) => (<p className={index === 0 ? module.firstLevelsPar : module.levelsPar} key={index}>#{item}</p>))}
                 </div>
                 <button className={module.trialLesson}>Book trial lesson</button>
             </div>
