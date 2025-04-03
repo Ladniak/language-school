@@ -1,12 +1,46 @@
-# React + Vite
+# Language School
+A web application for searching language teachers, allowing users to browse available teachers, enroll in classes and register.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Features
+- Browse a catalog of teachers
+- Filter 
+- Enroll in a selected course
+- Add to favourite
+- Authentication
 
-Currently, two official plugins are available:
+## Installation
+### Clone the repository:
+```sh
+git clone https://github.com/Ladniak/language-school.git
+```
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Navigate to the project directory:
+```sh
+cd language-school
+```
 
-## Expanding the ESLint configuration
+### Open the project in your code editor:
+```sh
+code .
+```
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Install dependencies:
+```sh
+npm install
+```
+
+### Start the development server:
+```sh
+npm run dev
+```
+
+## Usage
+1. Open the application in your browser.
+2. Browse, filter, add to favorites tutors.
+3. Sign up for classes.
+
+## Author
+**Serhii Ladniak**  
+19 y.o., Frontend Developer  
+GitHub: [Ladniak](https://github.com/Ladniak)
+
