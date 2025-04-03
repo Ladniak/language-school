@@ -1,12 +1,8 @@
 import module from "./TeacherList.module.css"
 
-import { useSelector } from "react-redux";
-import { selectTeachers } from "../../redux/teachers/selectors";
-
 import TeacherCard from "../TeacherCard/TeacherCard"
 
-const TeacherList = () => {
-    const teachers = useSelector(selectTeachers);
+const TeacherList = ({ teachers }) => {
 
     return (
         <ul className={module.container}>

@@ -1,20 +1,51 @@
 import module from "./TeacherCard.module.css"
 
 import { useState } from "react"
+import { useDispatch, useSelector } from "react-redux";
 
 import TrialLessonModal from "../TrialLessonModal/TrialLessonModal";
 
+import { selectFavouriteTeachers } from "../../redux/teachers/selectors";
+import { toggleFavourite } from "../../redux/teachers/slice";
+import { selectIsLoggedIn } from "../../redux/auth/selectors";
+
+import toast, { Toaster } from "react-hot-toast";
+
 const TeacherCard = ({ teacher }) => {
+    const dispatch = useDispatch();
+
     const [visible, setVisible] = useState(false);
     const [openLessonModal, setOpenLessonModal] = useState(false);
+
+    const favourites = useSelector(selectFavouriteTeachers);
+    const login = useSelector(selectIsLoggedIn);
+
+    const isFavourite = favourites.some(fav => fav.id === teacher.id);
 
     const onCloseTrialLesson = () => {
         setOpenLessonModal(false)
     }
 
+    console.log(login);
+
+
     const handleChangeReadMore = () => {
         setVisible(!visible);
     }
+
+    const handleFavouriteClick = () => {
+        if (login) {
+            toast.success('Successfull!')
+            dispatch(toggleFavourite(teacher));
+        } else {
+            toast(
+                "Only an authorized user can add to favorites.",
+                {
+                    duration: 5000,
+                }
+            );
+        }
+    };
 
     return (
         <>
@@ -53,10 +84,17 @@ const TeacherCard = ({ teacher }) => {
                                 <path d="M1 0V16" stroke="#121417" strokeOpacity="0.2" />
                             </svg>
                             <p className={module.infoPar}>Price / 1 hour: <span className={module.price}>{teacher.price_per_hour}$</span></p>
-                            <button className={module.heart}>
-                                <svg className={module.heartIcon} width="26" height="22" viewBox="0 0 26 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M22.5767 2.99419C22.0233 2.44061 21.3664 2.00147 20.6433 1.70187C19.9202 1.40226 19.1452 1.24805 18.3625 1.24805C17.5798 1.24805 16.8048 1.40226 16.0817 1.70187C15.3586 2.00147 14.7017 2.44061 14.1483 2.99419L13 4.14252L11.8517 2.99419C10.734 1.87652 9.21812 1.24863 7.6375 1.24863C6.05688 1.24863 4.541 1.87652 3.42333 2.99419C2.30567 4.11186 1.67777 5.62774 1.67777 7.20836C1.67777 8.78898 2.30567 10.3049 3.42333 11.4225L4.57167 12.5709L13 20.9992L21.4283 12.5709L22.5767 11.4225C23.1302 10.8692 23.5694 10.2122 23.869 9.48916C24.1686 8.76608 24.3228 7.99105 24.3228 7.20836C24.3228 6.42566 24.1686 5.65064 23.869 4.92756C23.5694 4.20448 23.1302 3.54751 22.5767 2.99419Z" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                                </svg>
+                            <button className={module.heart} onClick={handleFavouriteClick}>
+                                {isFavourite ? (
+                                    <svg className={module.heartIconActive} width="26" height="22" viewBox="0 0 26 22" fill="#bfd6ea" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M22.5767 2.99419C22.0233 2.44061 21.3664 2.00147 20.6433 1.70187C19.9202 1.40226 19.1452 1.24805 18.3625 1.24805C17.5798 1.24805 16.8048 1.40226 16.0817 1.70187C15.3586 2.00147 14.7017 2.44061 14.1483 2.99419L13 4.14252L11.8517 2.99419C10.734 1.87652 9.21812 1.24863 7.6375 1.24863C6.05688 1.24863 4.541 1.87652 3.42333 2.99419C2.30567 4.11186 1.67777 5.62774 1.67777 7.20836C1.67777 8.78898 2.30567 10.3049 3.42333 11.4225L4.57167 12.5709L13 20.9992L21.4283 12.5709L22.5767 11.4225C23.1302 10.8692 23.5694 10.2122 23.869 9.48916C24.1686 8.76608 24.3228 7.99105 24.3228 7.20836C24.3228 6.42566 24.1686 5.65064 23.869 4.92756C23.5694 4.20448 23.1302 3.54751 22.5767 2.99419Z" strokeLinecap="round" strokeLinejoin="round" />
+                                    </svg>
+                                ) : (
+                                    <svg className={module.heartIcon} width="26" height="22" viewBox="0 0 26 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M22.5767 2.99419C22.0233 2.44061 21.3664 2.00147 20.6433 1.70187C19.9202 1.40226 19.1452 1.24805 18.3625 1.24805C17.5798 1.24805 16.8048 1.40226 16.0817 1.70187C15.3586 2.00147 14.7017 2.44061 14.1483 2.99419L13 4.14252L11.8517 2.99419C10.734 1.87652 9.21812 1.24863 7.6375 1.24863C6.05688 1.24863 4.541 1.87652 3.42333 2.99419C2.30567 4.11186 1.67777 5.62774 1.67777 7.20836C1.67777 8.78898 2.30567 10.3049 3.42333 11.4225L4.57167 12.5709L13 20.9992L21.4283 12.5709L22.5767 11.4225C23.1302 10.8692 23.5694 10.2122 23.869 9.48916C24.1686 8.76608 24.3228 7.99105 24.3228 7.20836C24.3228 6.42566 24.1686 5.65064 23.869 4.92756C23.5694 4.20448 23.1302 3.54751 22.5767 2.99419Z" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                                    </svg>
+                                )
+                                }
                             </button>
                         </div>
                     </div>
@@ -96,6 +134,10 @@ const TeacherCard = ({ teacher }) => {
                 </div>
             </div>
             {openLessonModal && <TrialLessonModal avatar={teacher.avatar_url} name={teacher.name} surname={teacher.surname} onClose={onCloseTrialLesson} />}
+            <Toaster
+                position="top-right"
+                reverseOrder={false}
+            />
         </>
 
     )

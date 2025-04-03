@@ -5,6 +5,7 @@ const initialState = {
   user: null,
   isLoading: false,
   error: null,
+  isLoggedIn: false,
 };
 
 const authSlice = createSlice({
@@ -13,6 +14,7 @@ const authSlice = createSlice({
   reducers: {
     logout: (state) => {
       state.user = null;
+      state.isLoggedIn = false;
     },
     setUser: (state, action) => {
       state.user = action.payload;
@@ -40,6 +42,7 @@ const authSlice = createSlice({
       .addCase(loginOp.fulfilled, (state, action) => {
         state.isLoading = false;
         state.user = action.payload;
+        state.isLoggedIn = true;
       })
       .addCase(loginOp.rejected, (state, action) => {
         state.isLoading = false;
