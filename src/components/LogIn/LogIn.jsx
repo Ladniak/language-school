@@ -1,16 +1,28 @@
-import { useEffect, useState } from "react";
 import module from "./LogIn.module.css"
-import { useForm } from "react-hook-form";
+
 import { useDispatch } from "react-redux";
+import { useForm } from "react-hook-form";
+import { useEffect, useState } from "react";
+
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
+
 import { loginOp } from "../../redux/auth/operations";
 
+const schema = yup.object().shape({
+    email: yup.string().email().required(),
+    password: yup.string().min(8).max(32).required(),
+});
+
 const LogIn = ({ onClose }) => {
+
     const dispatch = useDispatch();
     const [show, setShow] = useState(false);
-    const { register, handleSubmit } = useForm();
+    const { register, handleSubmit, formState: { errors } } = useForm({
+        resolver: yupResolver(schema),
+    });
 
     const onSubmit = (data) => {
-        console.log(data);
         dispatch(loginOp(data))
         onClose();
     }
@@ -47,9 +59,15 @@ const LogIn = ({ onClose }) => {
                         Welcome back! Please enter your credentials to
                         access your account and continue your search for an teacher.
                     </p>
-                    <input type="text" placeholder="Email" {...register('email')} className={module.inputEm} />
+                    <div className={module.errorDiv1}>
+                        <input type="text" placeholder="Email" {...register('email')} className={module.inputEm} required />
+                        <p>{errors.email?.message}</p>
+                    </div>
                     <div className={module.btnDiv}>
-                        <input type={show ? "text" : "password"} placeholder="Password" {...register('password')} autoComplete="on" className={module.inputPs} />
+                        <div className={module.errorDiv2}>
+                            <input type={show ? "text" : "password"} placeholder="Password" {...register('password')} autoComplete="on" className={module.inputPs} required />
+                            <p>{errors.password?.message}</p>
+                        </div>
                         <label className={module.btnLabel} onClick={handleShow}>
                             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <g clipPath="url(#clip0_4_621)">

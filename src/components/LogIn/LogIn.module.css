@@ -73,7 +73,6 @@
   border: 1px solid rgba(18, 20, 23, 0.1);
   border-radius: 12px;
   padding: 16px 18px 16px 18px;
-  margin-bottom: 18px;
   width: 438px;
   height: 54px;
 
@@ -85,6 +84,28 @@
 
 .btnDiv {
   position: relative;
+}
+
+.errorDiv1 {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 18px;
+  gap: 4px;
+}
+
+.errorDiv1:nth-last-child(2) {
+  color: red;
+}
+
+.errorDiv2 {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 40px;
+  gap: 4px;
+}
+
+.errorDiv2:nth-last-child(2) {
+  color: red;
 }
 
 .btnLabel {
@@ -104,7 +125,6 @@
   border: 1px solid rgba(18, 20, 23, 0.1);
   border-radius: 12px;
   padding: 16px 43px 16px 18px;
-  margin-bottom: 40px;
   width: 438px;
   height: 54px;
 

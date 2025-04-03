@@ -13,12 +13,18 @@
 
 .container {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
   border-radius: 30px;
-  width: 565px;
-  height: 599px;
+  max-height: 90%;
+  width: 599px;
   padding: 64px;
 
   background: #fff;
+
+  overflow-y: auto;
+  scrollbar-width: none;
 }
 
 .closeBtn {
@@ -39,9 +45,17 @@
   transform: scale(1.1);
 }
 
-.form {
+.headerInfo {
   display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
   flex-direction: column;
+  gap: 20px;
+
+  width: 472px;
+  height: 134px;
+
+  margin-bottom: 20px;
 }
 
 .header {
@@ -50,76 +64,111 @@
   line-height: 1.2;
   letter-spacing: -0.02em;
   color: #121417;
-
-  margin-bottom: 20px;
 }
 
-.par {
+.headerPar {
   font-weight: 400;
   font-size: 16px;
   line-height: 1.375;
   color: rgba(18, 20, 23, 0.8);
+}
+
+.teacherInfo {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: row;
+  gap: 14px;
+
+  height: 44px;
 
   margin-bottom: 40px;
 }
 
-.inputNm {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: row;
-  gap: 18px;
-
-  border: 1px solid rgba(18, 20, 23, 0.1);
-  border-radius: 12px;
-  padding: 16px 18px 16px 18px;
-  width: 438px;
-  height: 54px;
-
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 1.375;
-  color: #121417;
+.avatar {
+  border-radius: 100px;
+  width: 44px;
+  height: 44px;
 }
 
-.inputEm {
+.par {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: row;
-  gap: 18px;
-
-  border: 1px solid rgba(18, 20, 23, 0.1);
-  border-radius: 12px;
-  padding: 16px 18px 16px 18px;
-  width: 438px;
-  height: 54px;
-
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 1.375;
-  color: #121417;
-}
-
-.btnDiv {
-  position: relative;
-}
-
-.errorDiv {
-  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
   flex-direction: column;
-  margin-bottom: 18px;
-  gap: 4px;
+  gap: 8px;
+
+  width: 69px;
+  height: 16px;
+
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33333;
+  color: #8a8a89;
 }
 
-.errorDiv p:nth-last-child(1) {
+.teacherName {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #121417;
+}
+
+.questPar {
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 1.33333;
+  color: #121417;
+  margin-bottom: 20px;
+}
+
+.radioChoose {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  gap: 16px;
+
+  margin-bottom: 40px;
+
+  width: 197px;
+}
+
+.radioChoose p:nth-last-child(1) {
   color: red;
+}
+
+.inputLabel {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  gap: 8px;
+
+  height: 23px;
+
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.375;
+  text-align: center;
+  color: #121417;
+}
+
+.inputsDiv {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  gap: 18px;
+
+  margin-bottom: 40px;
+
+  width: 472px;
+  height: 198px;
 }
 
 .errorDiv1 {
   display: flex;
   flex-direction: column;
-  margin-bottom: 18px;
   gap: 4px;
 }
 
@@ -127,25 +176,7 @@
   color: red;
 }
 
-.errorDiv2 {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 40px;
-  gap: 4px;
-}
-
-.errorDiv2:nth-last-child(2) {
-  color: red;
-}
-
-.btnLabel {
-  position: absolute;
-  cursor: pointer;
-  top: 17px;
-  right: 18px;
-}
-
-.inputPs {
+.inputFn {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -154,8 +185,8 @@
 
   border: 1px solid rgba(18, 20, 23, 0.1);
   border-radius: 12px;
-  padding: 16px 43px 16px 18px;
-  width: 438px;
+  padding: 16px 16px 16px 18px;
+  width: 472px;
   height: 54px;
 
   font-weight: 400;
@@ -172,7 +203,8 @@
   gap: 0px;
 
   border-radius: 12px;
-  width: 438px;
+  padding: 16px 0;
+  width: 472px;
   height: 60px;
 
   font-weight: 700;
