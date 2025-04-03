@@ -13,11 +13,15 @@ const schema = yup.object().shape({
     number: yup.string().required("Phone number is required."),
 });
 
-
 const TrialLessonModal = ({ onClose, name, avatar, surname }) => {
-    const { register, handleSubmit, formState: { errors } } = useForm({
+    const { register, handleSubmit, formState: { errors }, watch } = useForm({
         resolver: yupResolver(schema),
+        defaultValues: {
+            reason: "",
+        },
     });
+
+    const selectedReason = watch("reason");
 
     const handleEscape = event => {
         if (event.key === 'Escape') {
@@ -63,26 +67,30 @@ const TrialLessonModal = ({ onClose, name, avatar, surname }) => {
                 <h3 className={module.questPar}>What is your main reason for learning English?</h3>
                 <form id="form" onSubmit={handleSubmit(onSubmit)}>
                     <div className={module.radioChoose}>
-                        <label className={module.inputLabel}>
-                            <input type="radio" value="carrer" {...register("reason")} />
-                            Career and business
-                        </label>
-                        <label className={module.inputLabel}>
-                            <input type="radio" value="kids" {...register("reason")} />
-                            Lesson for kids
-                        </label>
-                        <label className={module.inputLabel}>
-                            <input type="radio" value="abroad" {...register("reason")} />
-                            Living abroad
-                        </label>
-                        <label className={module.inputLabel}>
-                            <input type="radio" value="studing" {...register("reason")} />
-                            Exams and coursework
-                        </label>
-                        <label className={module.inputLabel}>
-                            <input type="radio" value="journey" {...register("reason")} />
-                            Culture, travel or hobby
-                        </label>
+                        <div className={module.inputLabel}>
+                            <input className={module.customInput} type="radio" id="career" value="career" {...register("reason")} />
+                            <label className={module.customLabel} htmlFor="career">Career and business</label>
+                        </div>
+
+                        <div className={module.inputLabel}>
+                            <input className={module.customInput} type="radio" id="kids" value="kids" {...register("reason")} />
+                            <label className={module.customLabel} htmlFor="kids">Lesson for kids</label>
+                        </div>
+
+                        <div className={module.inputLabel}>
+                            <input className={module.customInput} type="radio" id="abroad" value="abroad" {...register("reason")} />
+                            <label className={module.customLabel} htmlFor="abroad">Living abroad</label>
+                        </div>
+
+                        <div className={module.inputLabel}>
+                            <input className={module.customInput} type="radio" id="studing" value="studing" {...register("reason")} />
+                            <label className={module.customLabel} htmlFor="studing">Exams and coursework</label>
+                        </div>
+
+                        <div className={module.inputLabel}>
+                            <input className={module.customInput} type="radio" id="journey" value="journey" {...register("reason")} />
+                            <label className={module.customLabel} htmlFor="journey">Culture, travel or hobby</label>
+                        </div>
                         {errors.reason && <p className={module.error}>{errors.reason.message}</p>}
                     </div>
                     <div className={module.inputsDiv}>

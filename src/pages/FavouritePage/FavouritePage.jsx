@@ -4,19 +4,31 @@ import { useSelector } from "react-redux"
 
 import TeacherList from "../../components/TeacherList/TeacherList"
 
-import { selectFavouriteTeachers } from "../../redux/teachers/selectors"
+import { BeatLoader } from "react-spinners"
+
+import { isLoading, selectFavouriteTeachers } from "../../redux/teachers/selectors"
 
 const FavouritePage = () => {
-    const teachers = useSelector(selectFavouriteTeachers)
+    const loading = useSelector(isLoading);
+    const teachers = useSelector(selectFavouriteTeachers);
 
     return (
-        <div className={module.container}>
-            {teachers.length > 0 ? (
-                <TeacherList teachers={teachers} />
+        <>
+            {loading ? (
+                <div className={module.container}>
+                    <BeatLoader />
+                </div>
             ) : (
-                'Not Favourites yet'
+                <div className={module.container}>
+                    {teachers.length > 0 ? (
+                        <TeacherList teachers={teachers} />
+                    ) : (
+                        <h1 className={module.header}>Not Favourites <span className={module.headerSpan}>yet</span>!</h1>
+                    )}
+                </div>
             )}
-        </div>
+        </>
+
     )
 }
 

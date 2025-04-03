@@ -26,9 +26,6 @@ const TeacherCard = ({ teacher }) => {
         setOpenLessonModal(false)
     }
 
-    console.log(login);
-
-
     const handleChangeReadMore = () => {
         setVisible(!visible);
     }
