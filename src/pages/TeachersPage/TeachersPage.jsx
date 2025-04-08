@@ -7,6 +7,7 @@ import { isLoading, selectTeachers } from "../../redux/teachers/selectors"
 import { getTeachers } from "../../redux/teachers/operations"
 
 import TeacherList from "../../components/TeacherList/TeacherList"
+import FilterMenu from "../../components/FilterMenu/FilterMenu"
 
 import { BeatLoader } from "react-spinners"
 
@@ -24,7 +25,10 @@ const TeachersPage = () => {
             {loading ? (
                 <BeatLoader />
             ) : (
-                <TeacherList teachers={teachers} />
+                <>
+                    <FilterMenu />
+                    <TeacherList teachers={teachers} />
+                </>
             )}
         </div>
     )
