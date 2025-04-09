@@ -1,25 +1,23 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { getDatabase, ref, get } from "firebase/database";
 
-export const getTeachers = createAsyncThunk("teachers/fetchAll", async () => {
-  try {
-    const database = getDatabase();
-    const dataRef = ref(database);
-    const snapShot = await get(dataRef);
+export const getTeachers = createAsyncThunk(
+  "teachers/fetchPaginated",
+  async ({ startIndex = 0, limit = 4 }, { rejectWithValue }) => {
+    try {
+      const db = getDatabase();
+      const dataRef = ref(db);
+      const snapshot = await get(dataRef);
 
-    if (snapShot.exists()) {
-      const teachersArray = Object.values(snapShot.val() || {}).map(
-        (teacher, index) => ({
-          ...teacher,
-          id: `teacher-${index}`,
-        })
-      );
-      return teachersArray;
-    } else {
-      return [];
+      if (snapshot.exists()) {
+        const allTeachers = Object.values(snapshot.val());
+        const paginated = allTeachers.slice(startIndex, startIndex + limit);
+        return paginated;
+      } else {
+        return [];
+      }
+    } catch (error) {
+      return rejectWithValue(error.message);
     }
-  } catch (error) {
-    console.error("Error fetching teachers:", error);
-    throw error;
   }
-});
+);

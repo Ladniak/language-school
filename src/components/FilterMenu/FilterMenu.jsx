@@ -1,6 +1,6 @@
-import { useEffect } from "react";
+// import { useEffect } from "react";
 import { useForm, Controller } from "react-hook-form";
-import { customStyles } from "../../../utils/customSelect";
+import { customStyles1, customStyles2, customStyles3 } from "../../../utils/customSelect";
 
 import Select from "react-select";
 
@@ -17,13 +17,13 @@ const FilterMenu = () => {
 
     const selectedValues = watch();
 
-    useEffect(() => {
-        console.log({
-            language: selectedValues.language?.value,
-            level: selectedValues.level?.value,
-            price: selectedValues.price?.value,
-        });
-    }, [selectedValues]);
+    // useEffect(() => {
+    //     console.log({
+    //         language: selectedValues.language?.value,
+    //         level: selectedValues.level?.value,
+    //         price: selectedValues.price?.value,
+    //     });
+    // }, [selectedValues]);
 
     const languageOptions = [
         { label: "French", value: "French" },
@@ -57,8 +57,9 @@ const FilterMenu = () => {
                     render={({ field }) => (
                         <Select
                             {...field}
+                            placeholder="Choose a language"
                             options={languageOptions}
-                            styles={customStyles}
+                            styles={customStyles1}
                             isSearchable={false}
                         />
                     )}
@@ -73,8 +74,9 @@ const FilterMenu = () => {
                     render={({ field }) => (
                         <Select
                             {...field}
+                            placeholder="Choose a level"
                             options={levelOptions}
-                            styles={customStyles}
+                            styles={customStyles2}
                             isSearchable={false}
                         />
                     )}
@@ -90,7 +92,7 @@ const FilterMenu = () => {
                         <Select
                             {...field}
                             options={priceOptions}
-                            styles={customStyles}
+                            styles={customStyles3}
                             isSearchable={false}
                         />
                     )}

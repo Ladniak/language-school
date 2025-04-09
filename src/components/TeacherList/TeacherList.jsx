@@ -1,32 +1,32 @@
-import { useState } from "react";
-
 import module from "./TeacherList.module.css";
 
 import TeacherCard from "../TeacherCard/TeacherCard";
 import LoadMoreBtn from "../LoadMoreBtn/LoadMoreBtn";
 
-const TeacherList = ({ teachers }) => {
-    const [loadedTeachers, setLoadedTeachers] = useState(4);
+import { isLoading } from "../../redux/teachers/selectors";
+import { useSelector } from "react-redux";
 
-    const loadMoreTeachers = () => {
-        setLoadedTeachers((prev) => prev + 4);
-    };
+import { BeatLoader } from "react-spinners";
+
+const TeacherList = ({ teachers, onLoadMore, hasMore }) => {
+    const loading = useSelector(isLoading);
 
     return (
-        <div>
+        <>
             <ul className={module.container}>
-                {teachers?.slice(0, loadedTeachers).map((teacher) => (
+                {teachers.map((teacher) => (
                     <li key={teacher.id}>
                         <TeacherCard teacher={teacher} />
                     </li>
                 ))}
             </ul>
-            {teachers?.length > loadedTeachers && (
-                <LoadMoreBtn onClick={loadMoreTeachers} />
-            )}
-        </div>
+            {loading ? <div className={module.loader}><BeatLoader /></div> : hasMore && <LoadMoreBtn onClick={onLoadMore} />}
+
+        </>
     );
 };
 
 export default TeacherList;
+
+
 

@@ -1,5 +1,5 @@
-export const customStyles = {
-  control: (base, state) => ({
+export const customStyles1 = {
+  control: (base) => ({
     ...base,
     border: "none",
     boxShadow: "none",
@@ -12,14 +12,7 @@ export const customStyles = {
     backgroundPosition: "right 12px center",
     backgroundSize: "20px 20px",
     paddingRight: "36px",
-    width:
-      state.selectIndex === 1
-        ? "221px"
-        : state.selectIndex === 2
-        ? "198px"
-        : state.selectIndex === 3
-        ? "124px"
-        : "auto",
+    width: "221px",
   }),
   valueContainer: (base) => ({
     ...base,
@@ -47,5 +40,21 @@ export const customStyles = {
     ...base,
     borderRadius: "10px",
     zIndex: 20,
+  }),
+};
+
+export const customStyles2 = {
+  ...customStyles1,
+  control: (base) => ({
+    ...customStyles1.control(base),
+    width: "198px",
+  }),
+};
+
+export const customStyles3 = {
+  ...customStyles1,
+  control: (base) => ({
+    ...customStyles1.control(base),
+    width: "124px",
   }),
 };

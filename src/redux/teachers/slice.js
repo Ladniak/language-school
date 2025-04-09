@@ -5,15 +5,16 @@ const savedFavourites =
   JSON.parse(localStorage.getItem("favouriteTeachers")) || [];
 
 const initialState = {
-  teachers: null,
+  teachers: [],
   isLoading: false,
   error: null,
   favouriteTeachers: savedFavourites,
+  loadedCount: 0,
 };
 
 const teachersSlice = createSlice({
   name: "teachers",
-  initialState: initialState,
+  initialState,
   reducers: {
     toggleFavourite: (state, action) => {
       const teacher = action.payload;
@@ -33,6 +34,10 @@ const teachersSlice = createSlice({
         JSON.stringify(state.favouriteTeachers)
       );
     },
+    resetTeachers: (state) => {
+      state.teachers = [];
+      state.loadedCount = 0;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -42,7 +47,8 @@ const teachersSlice = createSlice({
       })
       .addCase(getTeachers.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.teachers = action.payload;
+        state.teachers = [...state.teachers, ...action.payload];
+        state.loadedCount += action.payload.length;
       })
       .addCase(getTeachers.rejected, (state, action) => {
         state.isLoading = false;
@@ -51,5 +57,5 @@ const teachersSlice = createSlice({
   },
 });
 
-export const { toggleFavourite } = teachersSlice.actions;
+export const { toggleFavourite, resetTeachers } = teachersSlice.actions;
 export const teachersReducer = teachersSlice.reducer;
