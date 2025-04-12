@@ -25,16 +25,24 @@ const TeachersPage = () => {
     }, []);
 
     useEffect(() => {
-        loadMore();
+        if (teachers.length === 0) {
+            loadMore();
+        }
     }, []);
+
 
     const loadMore = async () => {
         const action = await dispatch(getTeachers({ startIndex, limit: LIMIT }));
         if (getTeachers.fulfilled.match(action)) {
-            setTeachers((prev) => [...prev, ...action.payload]);
+            setTeachers((prev) => {
+                const existingIds = new Set(prev.map((teacher) => teacher.id));
+                const newTeachers = action.payload.filter((t) => !existingIds.has(t.id));
+                return [...prev, ...newTeachers];
+            });
             setStartIndex((prev) => prev + LIMIT);
         }
     };
+
 
     return (
         <div className={module.container}>
