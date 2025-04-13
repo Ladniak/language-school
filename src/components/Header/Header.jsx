@@ -4,7 +4,7 @@ import HeaderMenu from "../HeaderMenu/HeaderMenu"
 
 import module from "./Header.module.css"
 
-const Header = () => {
+const AppBar = () => {
     return (
         <header className={module.headerLayout}>
             <div className={module.header}>
@@ -23,9 +23,10 @@ const Header = () => {
                         <NavLink className={module.link} to="/teachers">Teachers</NavLink>
                     </div>
                 </div>
+                <HeaderMenu />
             </div>
         </header>
     )
 }
 
-export default Header
+export default AppBar
