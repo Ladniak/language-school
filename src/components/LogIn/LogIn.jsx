@@ -60,12 +60,12 @@ const LogIn = ({ onClose }) => {
                         access your account and continue your search for an teacher.
                     </p>
                     <div className={module.errorDiv1}>
-                        <input type="text" placeholder="Email" {...register('email')} className={module.inputEm} required />
+                        <input type="text" placeholder="Email" {...register('email')} className={module.inputEm} />
                         <p>{errors.email?.message}</p>
                     </div>
                     <div className={module.btnDiv}>
                         <div className={module.errorDiv2}>
-                            <input type={show ? "text" : "password"} placeholder="Password" {...register('password')} autoComplete="on" className={module.inputPs} required />
+                            <input type={show ? "text" : "password"} placeholder="Password" {...register('password')} autoComplete="on" className={module.inputPs} />
                             <p>{errors.password?.message}</p>
                         </div>
                         <label className={module.btnLabel} onClick={handleShow}>

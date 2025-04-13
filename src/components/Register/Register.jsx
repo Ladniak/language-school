@@ -64,7 +64,7 @@ const Register = ({ onClose }) => {
                     </p>
                     <div className={module.errorDiv}>
                         <input type="text" placeholder="Name" {...register('displayName')} className={module.inputNm} />
-                        <p>{errors.name?.message}</p>
+                        <p>{errors.displayName?.message}</p>
                     </div>
                     <div className={module.errorDiv1}>
                         <input type="text" placeholder="Email" {...register('email')} className={module.inputEm} required />
