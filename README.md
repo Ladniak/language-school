@@ -3,7 +3,6 @@ A web application for searching language teachers, allowing users to browse avai
 
 ## Features
 - Browse a catalog of teachers
-- Filter 
 - Enroll in a selected course
 - Add to favourite
 - Authentication
