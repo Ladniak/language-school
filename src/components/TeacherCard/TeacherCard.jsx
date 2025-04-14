@@ -7,7 +7,7 @@ import TrialLessonModal from "../TrialLessonModal/TrialLessonModal";
 
 import { selectFavouriteTeachers } from "../../redux/teachers/selectors";
 import { toggleFavourite } from "../../redux/teachers/slice";
-import { selectIsLoggedIn } from "../../redux/auth/selectors";
+import { selectUserName } from "../../redux/auth/selectors";
 
 import toast, { Toaster } from "react-hot-toast";
 
@@ -18,7 +18,7 @@ const TeacherCard = ({ teacher }) => {
     const [openLessonModal, setOpenLessonModal] = useState(false);
 
     const favourites = useSelector(selectFavouriteTeachers);
-    const login = useSelector(selectIsLoggedIn);
+    const login = useSelector(selectUserName);
 
     const isFavourite = favourites.some(fav => fav.id === teacher.id);
 
@@ -31,7 +31,7 @@ const TeacherCard = ({ teacher }) => {
     }
 
     const handleFavouriteClick = () => {
-        if (login) {
+        if (login != null) {
             toast.success('Successfull!')
             dispatch(toggleFavourite(teacher));
         } else {

@@ -6,6 +6,8 @@ import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 
+import toast, { Toaster } from "react-hot-toast";
+
 const schema = yup.object().shape({
     reason: yup.string().required("Please select a reason."),
     name: yup.string().required("Full name is required."),
@@ -30,7 +32,7 @@ const TrialLessonModal = ({ onClose, name, avatar, surname }) => {
     };
 
     const onSubmit = (data) => {
-        console.log(data);
+        toast.success('Successfull!')
         onClose();
     }
 
@@ -110,6 +112,10 @@ const TrialLessonModal = ({ onClose, name, avatar, surname }) => {
                 </form>
                 <button form="form" className={module.btn}>Book</button>
             </div>
+            <Toaster
+                position="top-right"
+                reverseOrder={false}
+            />
         </div>
     )
 }

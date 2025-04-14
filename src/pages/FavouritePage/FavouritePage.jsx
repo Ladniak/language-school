@@ -7,10 +7,19 @@ import TeacherList from "../../components/TeacherList/TeacherList"
 import { BeatLoader } from "react-spinners"
 
 import { isLoading, selectFavouriteTeachers } from "../../redux/teachers/selectors"
+import { selectUserName } from "../../redux/auth/selectors";
 
 const FavouritePage = () => {
     const loading = useSelector(isLoading);
-    const teachers = useSelector(selectFavouriteTeachers);
+    const login = useSelector(selectUserName);
+    const arrOfTeachers = useSelector(selectFavouriteTeachers);
+    let teachers;
+
+    if (login != null) {
+        teachers = arrOfTeachers;
+    } else {
+        teachers = [];
+    }
 
     return (
         <>
